@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block styles %}
+    <style>
+        .control-group{ text-align: left !important; margin-bottom: 1.5rem;}
+        #contactForm{ margin-bottom: 5rem !important;}
+    </style>
+{% endblock %}
+
+{% block banner %}
+    <section class="visual visual-sub visual-no-bg">
+        <div class="visual-inner no-overlay bg-gray-light">
+            <div class="centered">
+                <div class="container">
+                    <div class="visual-text visual-center">
+                        <h1 class="visual-title visual-sub-title">Gracias por ponerse en contacto</h1>
+                        <div class="breadcrumb-block">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home' %}"> Home </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'services' %}"> Servicios </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'portfolio' %}"> Portafolio </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

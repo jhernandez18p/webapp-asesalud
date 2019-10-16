@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block banner %}
+    <section class="visual visual-sub visual-no-bg">
+        <div class="visual-inner no-overlay bg-gray-light">
+            <div class="centered">
+                <div class="container">
+                    <div class="visual-text visual-center">
+                        <h1 class="visual-title visual-sub-title">Gracias por suscribirse</h1>
+                        <div class="breadcrumb-block">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home' %}"> Home </a>
+                                </li>
+                                <li class="breadcrumb-item"> 
+                                    <a href="{% url 'contact' %}"> Contacto 
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

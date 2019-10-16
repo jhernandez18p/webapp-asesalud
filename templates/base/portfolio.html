@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<style>
+    .portfolio-banner-v2 { background-image: url({% static 'img/portafolio-01.jpg' %}) !important; }
+</style>
+{% endblock %}
+
+{% block banner %}
+    <section class="visual">
+        <div class="visual-inner portfolio-banner-v2 black-overlay-4 parallax" data-stellar-background-ratio="0.55">
+            <div class="centered">
+                <div class="container">
+                    <div class="visual-text visual-center">
+                        <h1 class="visual-title visual-sub-title text-white">Portafolio</h1>
+                        <div class="breadcrumb-block">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                                <li class="breadcrumb-item active">Portafolio</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="portfolio-block">
+        <ul class="filter-nav filter-nav-v2 text-center button-group filter-button-group">
+            <li>
+                <button button class="is-checked"  data-filter="*">TODO</button>
+            </li>
+            <li>
+                <button data-filter=".ui">DISEÑO</button>
+            </li>
+            <li>
+                <button data-filter=".web">DESARROLLO WEB</button>
+            </li>
+            <li>
+                <button data-filter=".rrss">REDES SOCIALES</button>
+            </li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row masonary-block grid">
+
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 programming web">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-web-03.jpg' %}" class="fancybox-thumb fancy-pop" title="Moby Supply" href="{% static 'img/portfolio-web-03-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-web-03.jpg' %}" alt="Moby Supply">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Moby Supply</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 rrss ui">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-rrss-02.jpg' %}" class="fancybox-thumb fancy-pop" title="Fox Rent a Car Panamá" href="{% static 'img/portfolio-rrss-02-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-rrss-02.jpg' %}" alt="Fox Rent a Car Panamá">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Fox Rent a Car Panamá</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 web ui">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-web-01.jpg' %}" class="fancybox-thumb fancy-pop" title="Doors and Kitchen Panamá" href="{% static 'img/portfolio-web-01-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-web-01.jpg' %}" alt="Doors and Kitchen Panamá">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Doors and Kitchen Panamá</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 ui rrss">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-rrss-03.jpg' %}" class="fancybox-thumb fancy-pop" title="Ace rent a Car Panamá" href="{% static 'img/portfolio-rrss-03-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-rrss-03.jpg' %}" alt="Ace rent a Car Panamá">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Ace rent a Car Panamá</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 programming rrss">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-rrss-04.jpg' %}" class="fancybox-thumb fancy-pop" title="Niloshopper" href="{% static 'img/portfolio-rrss-04-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-rrss-04.jpg' %}" alt="Niloshopper">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Niloshopper</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 web programming">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-web-02.jpg' %}" class="fancybox-thumb fancy-pop" title="Digital City" href="{% static 'img/portfolio-web-02-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-web-02.jpg' %}" alt="Digital City">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Digital City</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 ui rrss">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-rrss-01.jpg' %}" class="fancybox-thumb fancy-pop" title="Digital City" href="{% static 'img/portfolio-rrss-01-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-rrss-01.jpg' %}" alt="Digital City">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Digital City</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="gallery-item col-md-6 col-lg-4 col-xl-3 web programming">
+                    <figure class="caption-hover-full">
+                        <a data-thumbnail="{% static 'img/portfolio-web-04.jpg' %}" class="fancybox-thumb fancy-pop" title="Luxury Motors Panamá" href="{% static 'img/portfolio-web-04-2.jpg' %}"></a>
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/portfolio-web-04.jpg' %}" alt="Luxury Motors Panamá">
+                        </div>
+                        <div class="image-details">
+                            <div class="figcaption">
+                                <div class="trigger">
+                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                </div>
+                                <div class="info">
+                                    <h2 class="content-title">Luxury Motors Panamá</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

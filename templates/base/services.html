@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<style>
+    .visual-banner { background-image: url({% static 'img/services-01.jpg' %}) !important; }
+</style>
+{% endblock %}
+
+
+{% block banner %}
+<section class="visual">
+    <div class="visual-inner visual-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
+        <div class="centered">
+            <div class="container">
+                <div class="visual-center">
+                    <h1 class="visual-title visual-sub-title">TRANSFORMA TU MUNDO DIGITAL</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+    <section class="content-block">
+        <div class="container text-center">
+            <div class="heading bottom-space">
+                <h2>Sueña. <span>Crea.</span> Transforma.</h2>
+            </div>
+            <div class="description">
+                <!-- <p>Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. Fat make met can must form into gate. Me we offending prevailed discovery. </p> -->
+            </div>
+        </div>
+    </section>
+    <section class="content-block p-0">
+        <div class="container">
+            <div class="content-slot alternate-block">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="bg-stretch img-wrap wow slideInLeft">
+                            <img src="{% static 'img/service-01.jpg' %}" alt="Desarrollo web">
+                        </div>
+                    </div>
+                    <div class="col col-lg-6">
+                        <div class="text-wrap">
+                            <h3>Expertos digitales trabajando para ti.</h3>
+                            <p>
+                                Nos encantaría escuchar tu idea y transformarla en un producto digital de alto impacto.
+                            </p>
+                            <div class="link-holder">
+                                <!-- <a class="link-more" href="#">Leer más</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="bg-stretch img-wrap wow slideInRight">
+                            <img src="{% static 'img/service-02.jpg' %}" alt="images">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-wrap">
+                            <h3>Marketing digital al alcance de tus manos.</h3>
+                            <p>
+                                Te ayudamos a mantener una imagen profesional y expandir el alcance de tus perfiles sociales.
+                            </p>
+                            <div class="link-holder">
+                                <!-- <a class="link-more" href="#">Leer más</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="bg-stretch img-wrap wow slideInLeft">
+                            <img src="{% static 'img/service-03.jpg' %}" alt="images">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-wrap">
+                            <h3>Servicio de email profresional.</h3>
+                            <p>
+                                Mejora tu imagen corporativa y envía emails personalizados con el nombre de tu dominio.
+                                <br>tu-nombre<strong>@</strong>tu-dominio.xyz
+                            </p>
+                            <div class="link-holder">
+                                <!-- <a class="link-more" href="#">Leer más</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-lg-6">
+                            <div class="bg-stretch img-wrap wow slideInRight">
+                                <img src="{% static 'img/service-04.jpg' %}" alt="images">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="text-wrap">
+                                <h3>Administración y mantenimiento de servicios en la nube.</h3>
+                                <p>
+                                    Tu infraestructura tecnológica completa en la nube pública, privada o híbrida.
+                                </p>
+                                <div class="link-holder">
+                                    <!-- <a class="link-more" href="#">Leer más</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    {% include "base/quotation-block.html" %}
+{% endblock %}
+

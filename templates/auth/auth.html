@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <!-- main content wrapper -->
+    <div class="content-wrapper">
+        <div class="row  no-gutters">
+            <div class="col-lg-6 hidden-md-down">
+                <div class="bg-stretch img-wrap">
+                    <img src="{% static 'img/visual-12.jpg' %}" alt="images">
+                </div>
+            </div>
+            <div class="col-lg-6 signup-block">
+                <div class="signup-wrap text-center">
+                    {% block auth %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/main content wrapper -->
+</main>
+{% endblock %}

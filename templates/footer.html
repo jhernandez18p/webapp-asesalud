@@ -1,0 +1,46 @@
+{% load static %}
+<footer class="footer footer-v1">
+    <div class="content-block footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <img src="{% static 'img/logo.svg' %}" alt="image-description">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-nav inline-nav text-center">
+                        <!-- <div class="my-4"> -->
+                            <h4 class="text-centered">
+                                Suscribirse al boletín de noticias.
+                            </h4>
+                            <div class="waituk_newsletter-form newsletter-v1 mt-2">
+                                <form action="{% url 'suscribe' %}" method="post">
+                                    {% csrf_token %}
+                                    <fieldset class="clearfix">
+                                        <div class="form-group input-holder">
+                                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                            <button type="submit" class="btn"><i class="fa fa-send"></i></button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="col-md-4 text-right">
+                    <ul class="social-network with-text">
+                        <li><a href="{% url 'social_facebook' %}" target="_blank"><span class="icon-facebook"></span></a></li>
+                        <li><a href="{% url 'social_twitter' %}" target="_blank"><span class="icon-twitter"></span></a></li>
+                        <li><a href="{% url 'social_instagram' %}" target="_blank"><span class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <div class="container">
+            <p>Copyright {% now "Y" %} - {% if not site_name %} Dev2tech {% else %} {{site_name}} {% endif %} </p>
+        </div>
+    </div>
+</footer>

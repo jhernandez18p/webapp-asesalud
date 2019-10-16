@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block styles %}
+    <style>
+        .control-group{ text-align: left !important; margin-bottom: 1.5rem;}
+    </style>
+{% endblock %}
+
+
+{% block banner %}
+{% endblock %}
+
+{% block content %}
+<section class="content-block bg-gray-light">
+    <div class="container">
+        <div class="demo-wrapper">
+            <h3 class="text-center element-heading">Cotización gratuita</h3>
+            <div class="description text-center">
+                {% crispy form %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

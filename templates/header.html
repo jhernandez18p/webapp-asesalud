@@ -1,0 +1,175 @@
+{% load static %}
+{% if not has_banner %}
+<header class="fixed-top main-header header-white no-top-header" id="waituk-main-header">
+{% else %}
+<header class="fixed-top main-header header-white transparent with-side-panel-ico" id="waituk-main-header">
+{% endif %}
+    <div id="nav-section">
+        <div class="bottom-header container-fluid mega-menus" id="mega-menus">
+            <nav class="navbar navbar-toggleable-md no-border-radius no-margin mega-menu-multiple" id="navbar-inner-container">
+                <form action="mega-menu-#" id="top-search" class="no-margin top-search">
+                    <div class="form-group no-margin">
+                        <input class="form-control no-border" id="search_term" name="search_term" placeholder="Escriba y presione Enter" type="text">
+                    </div>
+                </form>
+                <button type="button" class="navbar-toggler navbar-toggler-left" data-toggle="collapse" data-target="#mega-menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand mr-auto m-sm-auto" href="{% url 'home' %}"> 
+                    <img src="{% static 'img/logo.png' %}" alt="Logo Asesalud Laboral">
+                </a>
+                <div class="collapse navbar-collapse flex-row-reverse" id="mega-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown" data-animation="fadeIn">
+                            <a href="{% url 'home' %}" data-title="Home"> Home </a>
+                        </li>
+                        <li class="dropdown" data-animation="fadeIn">
+                            <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'services' %}" data-title="Servicios"> Servicios </a> -->
+                            <a href="{% url 'services' %}" data-title="Servicios"> Servicios </a>
+                            <!-- <ul class="dropdown-menu  no-border-radius">
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a class="sub-marker" href="#">Header Styles <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Header v1 </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a class="sub-marker" href="#"> Mega Menu <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Simple Mega </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a class="sub-marker" href="#">Footer Styles <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Footer v1 </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a href="#" class="sub-marker">Rev Slider <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Premium Slides </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a href="#" class="sub-marker"> Side Panel <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Left Overlay </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a href="#" class="sub-marker"> Page Banners <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Slide BG </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a href="#" class="sub-marker"> Banner Titles <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Left Aligned </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a href="#" class="sub-marker"> User Profiles <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Sign In </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-right dropdown-parent">
+                                    <a href="#" class="sub-marker"> Site Search <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> Header Search </a></li>
+                                    </ul>
+                                </li>
+                            </ul> -->
+                        </li>
+                        <li class="dropdown" data-animation="fadeIn">
+                            <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'portfolio' %}" data-title="Portafolio"> Portafolio </a> -->
+                            <a href="{% url 'portfolio' %}" data-title="Portafolio"> Portafolio </a>
+                            <!-- <ul class="dropdown-menu no-border-radius">
+                                <li class="dropdown dropdown-left dropdown-parent">
+                                    <a class="sub-marker" href="#"> No Sidebar <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> 2 Column </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-left dropdown-parent">
+                                    <a class="sub-marker" href="#"> Left Sidebar <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> 2 Column </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-left dropdown-parent">
+                                    <a class="sub-marker" href="#"> Right Sidebar <i class="icon-ios-more icn-right"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                        <li><a href="#"> 2 Column </a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"> Masonary </a></li>
+                                <li><a href="#">  Full Width </a></li>
+                            </ul> -->
+                        </li>
+                        <!-- <li class="dropdown right-dropdown" data-animation="fadeIn">
+                            <a href="{% url 'blog' %}" data-title="Blog"> Blog </a> -->
+                            <!-- <ul class="dropdown-menu no-border-radius">
+                                <li><a href="#"> Blog post </a></li>
+                            </ul> -->
+                        <!-- </li> -->
+                        <li>
+                            <a href="{% url 'contact' %}"> Contacto </a>
+                        </li>
+                        <li class="dropdown cart-list margin-0-sm">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+                                <!-- <span class="hidden-lg-up"> Shopping Cart </span><i class="custom-icon-cart m-marker"></i> -->
+                            </a>
+                            <!-- <div class="dropdown-menu-container">
+                                <div class="dropdown-menu no-border-radius col-lg-1 col-md-4 col-sm-4">
+                                    <h4> Shopping Cart </h4>
+                                    <ul class="s-list no-padding">
+                                        <li class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-5 col">
+                                                <div class="img">
+                                                    <a href="#"><img src="img/img-02.jpg" alt="image description"></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-8 col-sm-7 col">
+                                                <h6> <a href="#"><strong>Product 1 </strong></a><span class="text-muted float-right"> x 1 </span></h6>
+                                                <h6> $199 </h6>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-5 col">
+                                                <div class="img">
+                                                    <a href="#"><img src="img/img-02.jpg" alt="image description"></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-8 col-sm-7 col">
+                                                <h6> <a href="#"><strong>Product 2 </strong></a><span class="text-muted float-right"> x 2 </span></h6>
+                                                <h6> $199 </h6>
+                                            </div>
+                                        </li>
+                                        <li class="divider margin-bottom-1"></li>
+                                        <li class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-5 col">
+                                                <h2> Total </h2>
+                                            </div>
+                                            <div class="col-lg-8 col-md-8 col-sm-7 col">
+                                                <h2 class="text-right"> $3300 </h2>
+                                            </div>
+                                        </li>
+                                        <li><a href="#" class="btn btn-sm btn-block btn-secondary btn-mina btn-mina-rip-br"> View Cart </a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-pos-search with-side-panel">
+                    <!-- <a href="#" class="x-search x-search-trigger navbar-link"><i class="custom-icon-search"></i></a> -->
+                    <a href="#" class="x-search icon-close-round navbar-link"><i class="icon-line-cross"></i></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>

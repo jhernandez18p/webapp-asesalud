@@ -1,0 +1,61 @@
+{% extends 'auth/auth.html' %}
+{% load static %}
+{% block auth %}
+<div class="signup-wrap text-center">
+    <div class="inner-wrap">
+        <div class="circular-icon bottom-space"><i class="icon-user-outline"></i></div>
+        <form method="post" id="contact_form" class="waituk_contact-form signup-form" novalidate>
+            <h2 class="bottom-space">Be a Part of Roxine Creatives</h2>
+            <div class="row">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <!-- <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="email" placeholder="EMAIL ADDRESS" id="con_email" name="con_fname" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="password" placeholder="PASSWORD" id="con_password" name="con_lname" class="form-control">
+                    </div>
+                </div> -->
+            </div>
+            <p>
+                Al hacer clic en el botón “Crear cuenta” a continuación, usted está de acuerdo
+                <a href="#"> con nuestros términos de servicios.</a>
+            </p>
+            <div class="btn-container mt-xl-5 mt-lg-2">
+                <button id="btn_sent" class="btn btn-primary has-radius-small">Registrarse</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <div class="container">
+    <h1 class="text-center logo my-4">
+        <a href="{% url 'home' %}">{{site_title}}</a>
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Registro</h3>
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+                    </form>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    ¿Ya estas registrado? <a href="{% url 'signin' %}">Entrar</a>
+                </div>
+            </div>
+            <div class="text-center py-2">
+                <small>
+                    <a href="{% url 'password_reset' %}" class="text-muted">¿perdiste tu contraseña?</a>
+                </small>
+            </div>
+        </div>
+    </div>
+</div> -->
+{% endblock %}
