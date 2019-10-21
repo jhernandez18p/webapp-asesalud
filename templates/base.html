@@ -14,6 +14,7 @@
     {% block styles %}{% endblock %}
 </head>
 <body>
+    {% if include_content %}
     <div class="white-overlay">
         <div class="preloader" id="pageLoad">
             <div class="holder">
@@ -57,7 +58,7 @@
                         {% endif %}
                     </div>
                 </main>
-                <div class="search-form-wrapper overlay overlay-hugeinc">
+                <!-- <div class="search-form-wrapper overlay overlay-hugeinc">
                     <button type="button" class="overlay-close"><span class="custom-icon-plus"></span></button>
                     <div class="search-form">
                         <form action="#" method="post">
@@ -68,12 +69,13 @@
                         </form>
                     </div>
                 </div>
-                <a href="#" class="section-scroll" id="scroll-to-top"><i class="fa fa-angle-up"></i></a>
+                <a href="#" class="section-scroll" id="scroll-to-top"><i class="fa fa-angle-up"></i></a> -->
             </div>
         </div>
     </div>
     {% include "footer.html" %}
     {% include "base-scripts.html" %}
+    {% endif %}
     {% include "analytics-scripts.html" %}
 </body>
 </html>
