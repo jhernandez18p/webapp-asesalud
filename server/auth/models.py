@@ -6,9 +6,19 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
+from client.apps.utils.base import upload_location
 
 class Profile(models.Model):
-    avatar = models.ImageField(blank=True, null=True, verbose_name=_('Imágen de perfil'))
+    avatar = models.ImageField(
+        upload_to=upload_location,
+        null=True,
+        blank=True,
+        width_field="width_field",
+        height_field="height_field",
+        verbose_name=_('Imágen de perfil')
+    )
+    height_field = models.IntegerField(default=0, blank=True)
+    width_field = models.IntegerField(default=0, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True, verbose_name=_('Biografía'))
     location = models.CharField(max_length=30, blank=True, verbose_name=_('Dirección'))
@@ -26,7 +36,6 @@ class Profile(models.Model):
         else:
             fullname = self.user.username
         return fullname
-    
 
     class Meta:
         ordering = ['-id']

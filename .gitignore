@@ -114,20 +114,17 @@ dmypy.json
 .pyre/
 
 # Exclude
-/*.pyc
-/*/*.pyc
-/*/*/*.pyc
-/*/*/*/*.pyc
-/templates/html/*
-
+!/staticfiles/vendors/bootstrap-select/*
 !/staticfiles/vendors/owl-carousel/*
 !/staticfiles/vendors/rev-slider/*
-!/staticfiles/vendors/bootstrap-select/*
-!/staticfiles/vendors/tether/*
 !/staticfiles/vendors/rev-slider/revolution-addons/snow/*
-
-server/auth/migrations/*
+!/staticfiles/vendors/tether/*
 **/*.pyc
+**/migrations
+/media
+/staticfiles/*
+/templates/html
+
 .env
 LICENSE
 README.md
