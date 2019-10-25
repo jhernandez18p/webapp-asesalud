@@ -3699,10 +3699,7 @@ em.state-invalid {
 	min-height: inherit;
 }
 
-.main-header.sticky-nav .navbar .navbar-brand {
-	padding-top: 1.1rem;
-	padding-bottom: 1.25rem;
-}
+.main-header.sticky-nav .navbar .navbar-brand {/* padding-top: 1.1rem;padding-bottom: 1.25rem; */ }
 
 .main-header.sticky-nav .navbar .navbar-nav li a {
 	padding-top: 1.25rem;
@@ -4751,8 +4748,8 @@ em.state-invalid {
 /******* content block styles *******/
 
 .content-block {
-	padding-top: 3.75rem;
-	padding-bottom: 3.75rem;
+	padding-top: 3.75rem !important;
+	padding-bottom: 3.75rem !important;
 }
 
 .description {

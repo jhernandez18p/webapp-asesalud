@@ -19,7 +19,7 @@ class ServicesView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Servicios'
-        context['page_description'] = 'Services'
+        context['page_description'] = 'Servicios'
         context['has_banner'] = True
-        context['has_aside'] = True
+        context['has_aside'] = False
         return context

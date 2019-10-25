@@ -14,104 +14,104 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-lg-12 less-wide">
+                    
                     <div class="blog-holder">
                         <article class="blog-article">
-                                <div class="blog-title text-center pb-5">
-                                    <h1>The age old question of chicken first or the egg?</h1>
-                                    <div class="blog-lists border-0">
-                                        <ul class="blog-list-items">
-                                            <li>By: <a href="#">Admin</a></li>
-                                            <li>
-                                                <time datetime="2011-01-12">11 <span>AUG</span> </time>
-                                            </li>
-                                        </ul>
-                                    </div>
+                            <div class="blog-title text-center pb-5">
+                                <h1>{{ object.title }}</h1>
+                                <div class="blog-lists border-0">
+                                    <ul class="blog-list-items">
+                                        <li>By: <a href="#">{{ object.user }}</a></li>
+                                        <li>
+                                            <time datetime="{{ object.timestamp | date:'Y-M-D' }}">
+                                                {{ object.timestamp | date:"D d" }}
+                                                <span>{{ object.timestamp | date:"M" }}</span>
+                                            </time>
+                                        </li>
+                                    </ul>
                                 </div>
+                            </div>
                             <div class="blog-desc pt-5">
                                 <div class="blog-img">
                                     <div class="image-wrap">
                                         <figure class="">
-                                            <img src="{% static 'img/img-37.jpg' %}" alt="images description">
+                                            <img src="{{ post.image.url }}" alt="{{ post.sub_title }}">
                                         </figure>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <div class="blockquote-block blockquote-block-v2 pt-3 pb-3">
-                                    <blockquote>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore...</p>
-                                    </blockquote>
-                                </div>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                {{ object.content | safe }}
+                                {% if object.tag %}
                                 <div class="blog-share mt-5">
                                     <ul class="social-network with-text">
-                                        <li><strong>Share :</strong></li>
-                                        <li><a href="#"><span class="icon-facebook"></span> Facebook</a></li>
-                                        <li><a href="#"><span class="icon-twitter"></span> Twitter</a></li>
-                                        <li><a href="#"><span class="icon-google-plus"></span> Google</a></li>
+                                        <li><strong>Tags :</strong></li>
+                                        {% for tag in post.tag.all %}
+                                            <li>
+                                                <a href="{% url 'blog' %}?filter={{tag.slug}}">
+                                                    {{tag.title}}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
+                                {% endif %}
                             </div>
                         </article>
                     </div>
-                    <div class="content-block pt-5 pb-5">
-                        <div class="comment-block">
-                            <h6 class="content-title contact-title mb-3">3 Comments</h6>
-                            <div class="comment-slot">
-                                <div class="thumb circular-img">
-                                    <a href="#"><img src="{% static 'img/people-01.jpg' %}" alt="images description"></a>
-                                </div>
-                                <div class="comment-desc">
-                                    <h5><a href="#">Cleona Torez - Spain</a></h5>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor.</p>
-                                    <div class="meta">Commented on
-                                        <time datetime="2016-07-19">14/1/2016</time> - <a href="#">Reply</a>
+
+                    {% if object.comments %}
+                        <div class="content-block pt-5 pb-5">
+                            <div class="comment-block">
+                                <h6 class="content-title contact-title mb-3">Comentarios</h6>
+                                {% for comment in object.comments %}
+                                <div class="comment-slot">
+                                    <div class="thumb circular-img">
+                                        <a href="#"><img src="{% static 'img/people-01.jpg' %}" alt="{{ comment.user }}"></a>
+                                    </div>
+                                    <div class="comment-desc">
+                                        <h5><a href="#">{{ comment.user }}</a></h5>
+                                        {{ comment.content | safe }}
+                                        <div class="meta">Comentario del
+                                            <time datetime="{{ comment.timestamp | date:'Y-m-d' }}">
+                                                {{ comment.timestamp | date:'Y/m/d' }}
+                                            </time>
+                                            - {% if user.is_authenticated %}
+                                            <a href="#">Reply</a>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="comment-slot">
-                                <div class="thumb circular-img">
-                                    <a href="#"><img src="{% static 'img/people-02.jpg' %}" alt="images description"></a>
-                                </div>
-                                <div class="comment-desc">
-                                    <h5><a href="#">Steve Jurgen - Norway</a></h5>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor.</p>
-                                    <div class="meta">Commented on
-                                        <time datetime="2016-07-19">14/1/2016</time> - <a href="#">Reply</a>
-                                    </div>
-                                </div>
+                                <hr>
+                                {% endfor %}
                             </div>
                         </div>
-                    </div>
-                    <div class="contact-container">
-                        <form action="#" class="comment-form waituk_contact-form">
-                            <fieldset>
-                                <h6 class="content-title contact-title">LEAVE YOUR COMMENT</h6>
-                                <div class="row">
-                                    <div class="col-sm-6 form-group">
-                                        <input placeholder="Full Name" type="text" class="form-control">
-                                    </div>
-                                    <div class="col-sm-6 form-group">
-                                        <input placeholder="Email Address" type="email" class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 form-group">
-                                        <input placeholder="Website" type="text" class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 form-group">
-                                        <textarea placeholder="Your Comment" class="form-control"></textarea>
-                                    </div>
-                                    <div class="col-sm-12 btn-holder">
-                                        <button type="submit" class="btn btn-black btn-full">POST COMMENT</button>
-                                    </div>
-                            </fieldset>
-                        </form>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+                        <div class="contact-container">
+                            <form action="#" class="comment-form waituk_contact-form">
+                                <fieldset>
+                                    <h6 class="content-title contact-title">ESCRIBIR UN COMENTARIO</h6>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input placeholder="Full Name" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input placeholder="Email Address" type="email" class="form-control">
+                                        </div>
+                                        <div class="col-sm-12 form-group">
+                                            <input placeholder="Website" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-sm-12 form-group">
+                                            <textarea placeholder="Your Comment" class="form-control"></textarea>
+                                        </div>
+                                        <div class="col-sm-12 btn-holder">
+                                            <button type="submit" class="btn btn-black btn-full">PUBLICAR</button>
+                                        </div>
+                                </fieldset>
+                            </form>
                         </div>
+                    {% endif %}
+
                     </div>
                 </div>
             </div>

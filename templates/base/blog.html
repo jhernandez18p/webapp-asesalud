@@ -16,7 +16,9 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'home' %}"> Home </a></li>
                         <li class="breadcrumb-item active">Blog</li>
-                        <!-- <li class="breadcrumb-item active"> Default </li> -->
+                        {% if current_tag %}
+                            <li class="breadcrumb-item active"> {{ current_tag }} </li>
+                        {% endif %}
                     </ol>
                 </div>
             </div>
@@ -30,65 +32,56 @@
 <section class="content-block">
     <div class="container">
         <div class="row multiple-row">
-            <div class="col-md-6">
-                <div class="col-wrap">
-                    <div class="post-grid reverse-grid reverse-grid">
-                        <div class="img-block post-img">
-                            <a href="{% url 'blog' %}/post"><img src="{% static 'img/img-30.jpg' %}" alt="images"></a>
-                            <time class="post-date" datetime="2016-10-10">17 Jun</time>
-                        </div>
-                        <div class="post-text-block bg-gray-light">
-                            <strong class="content-title mb-0">
-                                <a href="{% url 'blog' %}/post">Heading South</a>
-                            </strong>
-                            <span class="content-sub-title">Where’s Responsive Design?</span>
-                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Auctor, nisi elit consequat ipsum,</p>
-                            <div class="post-meta clearfix">
-                                <div class="post-link-holder">
-                                    <a href="{% url 'blog' %}/post">Leer post <span class="fa fa-arrow-right"><span class="sr-only">&nbsp;</span></span></a>
+            {% for post in object_list %}
+                <div class="col-md-6">
+                    <div class="col-wrap">
+                        <div class="post-grid reverse-grid reverse-grid">
+                            <div class="img-block post-img">
+                                <a href="{{ post.get_absolute_url }}">
+                                    <img src="{{ post.image.url }}" alt="{{ post.sub_title }}">
+                                </a>
+                                <time class="post-date" datetime="{{ post.timestamp | date:'Y-M-d' }}">{{ post.timestamp | date:"d M Y" }}</time>
+                            </div>
+                            <div class="post-text-block bg-gray-light">
+                                <strong class="content-title mb-0">
+                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                </strong>
+                                {% if post.sub_title %}
+                                <span class="content-sub-title">{{ post.sub_title }}</span>
+                                {% endif %}
+                                {{ post.content | safe | truncatechars:140 }} <a href="{{ post.get_absolute_url }}">...</a>
+                                <div class="post-meta clearfix">
+                                    <div class="post-link-holder">
+                                        <a href="{{ post.get_absolute_url }}">
+                                            Leer post 
+                                            <span class="fa fa-arrow-right">
+                                                <span class="sr-only">&nbsp;</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    {% if post.tag %}
+                                    <div class="post-social text-right">
+                                        <ul class="social-network social-small">
+                                            {% for tag in post.tag.all %}
+                                            <li>
+                                                <a href="{% url 'blog' %}?filter={{tag}}">
+                                                    {{tag.title}}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    {% endif %}
                                 </div>
-                                <!-- <div class="post-social text-right">
-                                    <ul class="social-network social-small">
-                                        <li><a href="{% url 'blog' %}/post"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
-                                        <li><a href="{% url 'blog' %}/post"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
-                                    </ul>
-                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="col-wrap">
-                    <div class="post-grid reverse-grid">
-                        <div class="img-block post-img">
-                            <a href="{% url 'blog' %}/post"><img src="{% static 'img/img-31.jpg' %}" alt="images"></a>
-                            <time class="post-date" datetime="2016-10-10">17 Jun</time>
-                        </div>
-                        <div class="post-text-block bg-gray-light">
-                            <strong class="content-title mb-0"><a href="{% url 'blog' %}/post">Product Design</a></strong>
-                            <span class="content-sub-title">Thechnology and Trends</span>
-                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Auctor, nisi elit consequat ipsum,</p>
-                            <div class="post-meta clearfix">
-                                <div class="post-link-holder">
-                                    <a href="{% url 'blog' %}/post">Leer post <span class="fa fa-arrow-right"><span class="sr-only">&nbsp;</span></span></a>
-                                </div>
-                                <!-- <div class="post-social text-right">
-                                    <ul class="social-network social-small">
-                                        <li><a href="{% url 'blog' %}/post"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
-                                        <li><a href="{% url 'blog' %}/post"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
-                                    </ul>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-        <div class="btn-container full-width-btn top-space">
-            <a href="javascript:void(0)" class="btn btn-black">VER MÁS<span class="c-ripple js-ripple"><span class="c-ripple__circle"></span></span></a>
-        </div>
+        {% if is_paginated %}
+        {% include "base/paginator.html" %}
+        {% endif %}
     </div>
 </section>
 {% endblock %}
-

@@ -12,6 +12,17 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASS'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
+    }
+}
+
 DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,32 +38,27 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'server.auth'
+    'server.auth',
+    'client.apps.blog',
+    'client.apps.services'
 ]
 
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'ckeditor'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware', # JWT
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -148,13 +154,6 @@ SESSION_COOKIE_AGE = 43200
 SESSION_COOKIE_NAME = 'session'
 
 if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(os.path.join(BASE_DIR, 'settings'), 'db.sqlite3'),
-        }
-    }
-
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     
     ALLOWED_HOSTS = ['*']
@@ -162,12 +161,6 @@ if DEBUG:
     MESSAGE_LEVEL = message_constants.DEBUG
 
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(os.path.join(BASE_DIR, 'settings'), 'db.sqlite3'),
-        }
-    }
     ALLOWED_HOSTS = ['www.asesaludlaboral.com.ve',]
     """
     Email conf
@@ -184,4 +177,4 @@ else:
     
     EMAIL_USE_SSL = config('EMAIL_USE_SSL')
     
-    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL') 
+    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')

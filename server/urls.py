@@ -19,21 +19,22 @@ urlpatterns = [
     path('', include( 'client.base.urls' )),
     path('adminsite/', admin.site.urls),
     path('auth/', include( 'server.auth.urls' )),
+    path('blog/', include( 'client.apps.blog.urls' )),
+    path('servicios/', include( 'client.apps.services.urls' )),
     path('dashboard/', include( 'client.panel.urls' )),
     re_path(r'^favicon\.ico$', favicon_view),
 ]
 
-admin.site.site_title = "Dev2tech CMS"
-admin.site.site_header = "CMS"
+admin.site.site_title = "Asesalud CMS"
+admin.site.site_header = "Asesalud Laboral 2727 c.a."
 
 handler400 = "server.auth.views.my_custom_bad_request_view"
 handler403 = "server.auth.views.my_custom_permission_denied_view"
 handler404 = "server.auth.views.my_custom_page_not_found_view"
 handler500 = "server.auth.views.my_custom_error_view"
 
-if settings.DEBUG:
-    urlpatterns += [
-        re_path(r'^media/(?P<path>.*)$', serve, {
-            'document_root': settings.MEDIA_ROOT,
-        }),        
-    ]
+urlpatterns += [
+    re_path(r'^media/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT,
+    }),        
+]

@@ -44,17 +44,17 @@ class ContactForm(forms.Form):
 class QuotationForm(forms.Form):
 
     AMOUNT = (
-        ('0-1K','0$ - 1,000.00$'),
-        ('1K-5K','1,000.00$ - 5,000.00$'),
-        ('5K-10K','5,000.00$ - 10,000.00$'),
-        ('10K-15K','10,000.00$ - 15,000.00$'),
+        ('$.','Dolares'),
+        ('Bs.','Bolivares'),
         ('unknown','No estoy seguro')
     )
     SERVICES = (
-        ('web','Expertos digitales trabajando para ti.'),
-        ('social media','Marketing digital al alcance de tus manos.'),
-        ('email','Servicio de email profresional.'),
-        ('cloud','Administración y mantenimiento de servicios en la nube.')
+        ('AC','ASESORÍAS Y CAPACITACIONES.'),
+        ('EA','EVALUACIONES AMBIENTALES.'),
+        ('IA','INVESTIGACIÓN Y ANÁLISIS.'),
+        ('DP','DELEGADOS DE PREVENCIÓN.'),
+        ('CSSL','COMITÉ DE SEGURIDAD Y SALUD LABORAL.'),
+        ('*','OTRO.'),
     )
     name = forms.CharField(
         label='Escriba su nombre',
@@ -70,11 +70,11 @@ class QuotationForm(forms.Form):
     )
     country = forms.CharField(
         label="País",
-        widget=forms.TextInput(attrs={'placeholder': 'Pamamá'})
+        widget=forms.TextInput(attrs={'placeholder': 'Venezuela'})
     )
     company = forms.CharField(
         label="Nombre de su empresa",
-        widget=forms.TextInput(attrs={'placeholder': 'Dev2tech'})
+        widget=forms.TextInput(attrs={'placeholder': 'Asesalud Laboral 2727 C.A.'})
     )
     invest = forms.ChoiceField(
         label="Monto de inversión",

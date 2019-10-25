@@ -17,13 +17,13 @@ Base Views
 """
 class HomeView(TemplateView):
     
-    template_name = "base/blank.html"
+    template_name = "base/home.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Inicio'
         context['page_description'] = 'Inicio'
-        context['has_banner'] = False
+        context['has_banner'] = True
         context['has_aside'] = False
         return context
 
@@ -37,7 +37,7 @@ class ServicesView(TemplateView):
         context['page_title'] = 'Servicios'
         context['page_description'] = 'Services'
         context['has_banner'] = True
-        context['has_aside'] = True
+        context['has_aside'] = False
         return context
 
 
@@ -99,35 +99,9 @@ class PortfolioView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Portfolio'
-        context['page_description'] = 'Portfolio'
+        context['page_title'] = 'Portalio'
+        context['page_description'] = 'Portalio'
         context['has_banner'] = True
-        context['has_aside'] = False
-        return context
-
-
-class BlogView(TemplateView):
-    
-    template_name = "base/blog.html"
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Blog'
-        context['page_description'] = 'Blog'
-        context['has_banner'] = True
-        context['has_aside'] = False
-        return context
-
-
-class BlogDetailView(TemplateView):
-    
-    template_name = "base/detail/blog.html"
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Blog'
-        context['page_description'] = 'Blog'
-        context['has_banner'] = False
         context['has_aside'] = False
         return context
 
@@ -168,7 +142,7 @@ class ContactView(FormView):
             subject="Contacto pagina web",
             message=quotation_message,
             from_email='info@dev2tech.xyz',
-            recipient_list=['info@dev2tech.xyz',],
+            recipient_list=['info@dev2tech.xyz, asesoriasesalud@gmail.com',],
         )
 
         '''
@@ -202,7 +176,7 @@ class SuscribeView(FormView):
         context['page_title'] = 'Gracias por suscribirse'
         context['page_description'] = 'Ud. se ha suscrito a nuestra lista contactos.'
         context['has_banner'] = False
-        context['has_aside'] = True
+        context['has_aside'] = False
         return context
 
     def send_email(self, email):
@@ -217,7 +191,7 @@ class SuscribeView(FormView):
             subject="Suscriptor página web",
             message=suscribe_message,
             from_email='info@dev2tech.xyz',
-            recipient_list=['info@dev2tech.xyz',],
+            recipient_list=['info@dev2tech.xyz','asesoriasesalud@gmail.com',],
         )
 
         '''
@@ -234,7 +208,7 @@ class ThanksView(TemplateView):
         context['page_title'] = 'Gracias'
         context['page_description'] = 'Ud. se ha comunicado con el equipo de Dev2tech, su solicitud será procesada en breve.'
         context['has_banner'] = False
-        context['has_aside'] = True
+        context['has_aside'] = False
         return context
 
 
