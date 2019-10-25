@@ -52,7 +52,10 @@ class Suscribe(models.Model):
         (UNSUSCRIBED, 'Private company limited by shares'),
     )
 
+    name = models.CharField(max_length=254, blank=True)
+    phone_number = models.CharField(max_length=254, blank=True)
     email = models.EmailField(max_length=254,)
+    message = models.TextField(blank=True)
     status = models.CharField('type', max_length=3, choices=STATUS_TYPE_CHOICES, default='SUB')
     date_added = models.DateField(auto_now_add=True)
     unsuscribe_at = models.DateTimeField(auto_now=True, auto_now_add=False,verbose_name=_('Ultima actualización'))
