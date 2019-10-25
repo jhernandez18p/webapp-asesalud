@@ -11,6 +11,7 @@ from django.views.generic.edit import FormView
 
 from server.auth.models import Suscribe
 from .forms import ContactForm, QuotationForm, SuscribeForm
+from server.auth.models import Suscribe
 
 """
 Base Views
@@ -28,19 +29,6 @@ class HomeView(TemplateView):
         return context
 
 
-class ServicesView(TemplateView):
-    
-    template_name = "base/services.html"
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Servicios'
-        context['page_description'] = 'Services'
-        context['has_banner'] = True
-        context['has_aside'] = False
-        return context
-
-
 class QuotationView(FormView):
     
     template_name = "base/quotation.html"
@@ -49,6 +37,28 @@ class QuotationView(FormView):
 
     def form_valid(self, form):
         self.send_email(form.cleaned_data)
+
+        message = """
+        Servicio : {service}          \n
+        Monto de inversión : {invest} \n
+        Empresa : {company}           \n
+        País : {country}              \n
+        Comentatios : {comment}       \n
+        """.format(
+            comment = form.cleaned_data['comment'],
+            invest = form.cleaned_data['invest'],
+            company = form.cleaned_data['company'],
+            country = form.cleaned_data['country'],
+            service = form.cleaned_data['subject']
+        )
+
+        new_suscriber = Suscribe(
+            name=form.cleaned_data['name'],
+            phone_number=form.cleaned_data['phone'],
+            email=form.cleaned_data['email'],
+            message=message,
+        )
+        new_suscriber.save()
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
@@ -85,7 +95,7 @@ class QuotationView(FormView):
             subject="Cotización pagina web",
             message=quotation_message,
             from_email='info@dev2tech.xyz',
-            recipient_list=['info@dev2tech.xyz',],
+            recipient_list=['info@dev2tech.xyz','asesoriasesalud@gmail.com',]
         )
 
         '''
@@ -114,6 +124,13 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         self.send_email(form.cleaned_data)
+        new_suscriber = Suscribe(
+            name=form.cleaned_data['name'],
+            phone_number=form.cleaned_data['phone'],
+            email=form.cleaned_data['email'],
+            message=form.cleaned_data['comment'],
+        )
+        new_suscriber.save()
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
@@ -142,7 +159,7 @@ class ContactView(FormView):
             subject="Contacto pagina web",
             message=quotation_message,
             from_email='info@dev2tech.xyz',
-            recipient_list=['info@dev2tech.xyz', 'asesoriasesalud@gmail.com',],
+            recipient_list=['info@dev2tech.xyz','asesoriasesalud@gmail.com',]
         )
 
         '''
@@ -169,6 +186,11 @@ class SuscribeView(FormView):
 
     def form_valid(self, form):
         self.send_email(form.cleaned_data)
+        new_suscriber = Suscribe(
+            email=form.cleaned_data['email'],
+            message='Suscriptor web',
+        )
+        new_suscriber.save()
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
@@ -176,7 +198,7 @@ class SuscribeView(FormView):
         context['page_title'] = 'Gracias por suscribirse'
         context['page_description'] = 'Ud. se ha suscrito a nuestra lista contactos.'
         context['has_banner'] = False
-        context['has_aside'] = False
+        context['has_aside'] = True
         return context
 
     def send_email(self, email):
@@ -191,7 +213,7 @@ class SuscribeView(FormView):
             subject="Suscriptor página web",
             message=suscribe_message,
             from_email='info@dev2tech.xyz',
-            recipient_list=['info@dev2tech.xyz','asesoriasesalud@gmail.com',],
+            recipient_list=['info@dev2tech.xyz','asesoriasesalud@gmail.com',]
         )
 
         '''
