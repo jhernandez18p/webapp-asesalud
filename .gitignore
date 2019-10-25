@@ -122,6 +122,7 @@ dmypy.json
 **/*.pyc
 **/migrations
 /media
+!/staticfiles/img/*
 /staticfiles/*
 /templates/html
 
