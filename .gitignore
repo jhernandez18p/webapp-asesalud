@@ -122,8 +122,8 @@ dmypy.json
 **/*.pyc
 **/migrations
 /media
-!/staticfiles/img/*
 /staticfiles/*
+!/staticfiles/img/*
 /templates/html
 
 .env
