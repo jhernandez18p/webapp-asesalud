@@ -10,6 +10,7 @@ class SuscribeForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'Email',})
     )
 
+
 class ContactForm(forms.Form):
 
     name = forms.CharField(
@@ -32,12 +33,13 @@ class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.form_action = 'contacto'
         self.helper.layout = Layout(
             Field('name', css_class="form-control"),
             Field('email', css_class='form-control'),
             Field('phone', css_class='form-control'),
             Field('comment', css_class="form-control"),
-            Submit('submit', 'Solicitar Cotización')
+            Submit('submit', 'Enviar')
         )
 
 
@@ -101,5 +103,5 @@ class QuotationForm(forms.Form):
             Field('company', css_class='form-control'),
             Field('invest', css_class="form-control"),
             Field('comment', css_class="form-control"),
-            Submit('submit', 'Solicitar Cotización')
+            Submit('submit', 'Enviar')
         )

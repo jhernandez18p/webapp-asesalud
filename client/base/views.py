@@ -142,7 +142,7 @@ class ContactView(FormView):
             subject="Contacto pagina web",
             message=quotation_message,
             from_email='info@dev2tech.xyz',
-            recipient_list=['info@dev2tech.xyz, asesoriasesalud@gmail.com',],
+            recipient_list=['info@dev2tech.xyz', 'asesoriasesalud@gmail.com',],
         )
 
         '''
