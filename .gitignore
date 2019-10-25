@@ -114,6 +114,9 @@ dmypy.json
 .pyre/
 
 # Exclude
+!/staticfiles/img/*.jpg
+!**/home-*.*
+!**/home*.*
 !/staticfiles/vendors/bootstrap-select/*
 !/staticfiles/vendors/owl-carousel/*
 !/staticfiles/vendors/rev-slider/*
@@ -123,7 +126,6 @@ dmypy.json
 **/migrations
 /media
 /staticfiles/*
-!/staticfiles/img/*
 /templates/html
 
 .env
