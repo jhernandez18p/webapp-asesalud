@@ -114,6 +114,7 @@ dmypy.json
 .pyre/
 
 # Exclude
+
 !/staticfiles/img/*.jpg
 !**/home-*.*
 !**/home*.*
@@ -125,7 +126,6 @@ dmypy.json
 **/*.pyc
 **/migrations
 /media
-/staticfiles/*
 /templates/html
 
 .env
