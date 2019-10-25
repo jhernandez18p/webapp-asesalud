@@ -25,9 +25,11 @@
                                 <li class="breadcrumb-item">
                                     <a href="{% url 'services' %}"> Servicios </a>
                                 </li>
+                                {% if has_portfolio %}
                                 <li class="breadcrumb-item">
                                     <a href="{% url 'portfolio' %}"> Portafolio </a>
                                 </li>
+                                {% endif %}
                             </ol>
                         </div>
                     </div>
